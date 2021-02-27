@@ -15,25 +15,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import modelo.Compra;
-import modelo.Direccion;
-import modelo.Libro;
-import modelo.Usuario;
-import modelo.Voto;
-import modelotmp.UsuarioTMP;
-import negocio.LibroON;
-import negocio.UsuarioON;
-import negocio.VotoON;
+import ups.edu.ec.Modelo.Compra;
+import ups.edu.ec.Modelo.Libro;
+import ups.edu.ec.Modelo.Usuario;
+import ups.edu.ec.libroTEMP.UsuarioTEMP;
+import ups.edu.ec.ON.libroON;
+import ups.edu.ec.ON.usuarioON;
 
 @Path("/usuario")
 public class UsuarioService {
 	
 	@Inject
-	private UsuarioON user;
+	private usuarioON user;
 	@Inject
-	private LibroON libs;
-	@Inject
-	private VotoON vots;
+	private libroON libs;
+
 	
 	
 	@POST
@@ -68,14 +64,8 @@ public class UsuarioService {
 			usuario.setCorreo(u.getCorreo());
 			usuario.setPassword(u.getPassword());
 			usuario.setTelefono(u.getTelefono());
-			List<Direccion> direcciones = u.getDirecciones();
-			for (Direccion direccion : direcciones) {
-				Direccion d = new Direccion();
-				d.setCiudad(direccion.getCiudad());
-				d.setCalles(direccion.getCalles());
-				d.setUsuario(usuario);
-				usuario.agregarDireccion(d);
-			}
+			
+			
 			user.crearUsuario(usuario);
 			r.setId(200);
 			r.setMensaje("Usuario: "+usuario.getNombres()+" creado exitosamente");
@@ -87,23 +77,6 @@ public class UsuarioService {
 			
 		}
 		return r;
-	}
-	
-	
-	
-	@GET
-	@Path("/votar/{idu:[0-9][0-9]*}/{idl:[0-9][0-9]*}")
-	@Produces({MediaType.APPLICATION_JSON})
-	public void votar(@PathParam("idu") int idu, @PathParam("idl") int idl) {
-		Libro l = libs.buscarLibro(idl);
-		Usuario u = user.buscar(idu);
-		System.out.println("Usuario: "+u.toString());
-		System.out.println("Libro: "+l.toString());
-		Voto v = new Voto();
-		//v.agregarLibro(l);
-		//v.agregarUsuario(u);
-		vots.realizarVoto(v);
-		
 	}
 	
 	@GET

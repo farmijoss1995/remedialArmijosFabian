@@ -14,9 +14,10 @@ import javax.ws.rs.core.MediaType;
 import ups.edu.ec.Modelo.Autor;
 import ups.edu.ec.Modelo.Categoria;
 import ups.edu.ec.Modelo.Libro;
-import ups.edu.ec.modelotmp.LibroTMP;
+import ups.edu.ec.libroTEMP.LibroTEMP;
 import ups.edu.ec.ON.autorON;
 import ups.edu.ec.ON.libroON;
+import ups.edu.ec.libroTEMP.LibroTEMP;
 
 @Path("/libros")
 public class LibroService {

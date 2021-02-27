@@ -1,11 +1,13 @@
 package ups.edu.ec.ON;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import java.math.BigDecimal;
 import javax.inject.Inject;
 
 import ups.edu.ec.DAO.LibroDao;
 import ups.edu.ec.Modelo.Libro;
+import ups.edu.ec.libroTEMP.LibroTEMP;
 
 
 public class libroON {
@@ -28,17 +30,18 @@ public class libroON {
 	public List<Libro>buscarSimilar(String key) {
 		return librodao.buscarSimilar(key);
 	}
-	public List<LibroTEMP>librosMasVendidos{
+	public List<LibroTEMP> librosMasVendidos(){
 		List<Object[]> lista = librodao.librosMasVendidos();
 		List<LibroTEMP> libros = new ArrayList<LibroTEMP>();
-		for(Object[] 1 : lista) {
+		for (Object[] l : lista) {
 			LibroTEMP lt = new LibroTEMP();
-			lt.setId((int) 1[0]);
-			lt.setTitulo((String) 1[1]);
-			lt.setPaginas((int) 1[2]);
-			lt.setCantidad(((BigDecimal)1[3]).intValue());
-			libros.add(lt)
+			lt.setId((int) l[0]);
+			lt.setTitulo((String) l[1]);
+			lt.setPaginas((int) l[2]);
+			lt.setCantidad(((BigDecimal)l[3]).intValue());
+			libros.add(lt);
 
 		}
+		return libros;
 	}
 }

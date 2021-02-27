@@ -16,14 +16,14 @@ import javax.ws.rs.core.MediaType;
 import ups.edu.ec.Modelo.Compra;
 import ups.edu.ec.Modelo.Detalle;
 import ups.edu.ec.Modelo.Usuario;
-import ups.edu.ec.modelotmp.DetalleCom;
+import ups.edu.ec.libroTEMP.DetalleCom;
 //import modelo.Detalle;
-import ups.edu.ec.modelotmp.DetalleTMP;
-import ups.edu.ec.modelotmp.DireccionTMP;
-import ups.edu.ec.modelotmp.TarjetaTMP;
+import ups.edu.ec.libroTEMP.DetalleTEMP;
+
 import ups.edu.ec.ON.compraON;
 import ups.edu.ec.ON.libroON;
 import ups.edu.ec.ON.usuarioON;
+import ups.edu.ec.libroTEMP.DetalleTEMP;
 
 @Path("/compras")
 public class CompraService {

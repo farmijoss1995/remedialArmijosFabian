@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import ups.edu.ec.DAO.UsuarioDao;
 import ups.edu.ec.Modelo.Compra;
 import ups.edu.ec.Modelo.Usuario;
-import modelotmp.UsuarioTMP;
+import ups.edu.ec.libroTEMP.UsuarioTEMP;
 
 @Stateless
 public class usuarioON {
