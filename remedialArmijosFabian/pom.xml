@@ -22,8 +22,9 @@
     <artifactId>Logica</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     
+    
     <packaging>war</packaging>
-    <name>Logica</name>
+    <name>remedialArmijosFabian</name>
     <description>Insert description for your project here.</description>
 
     <properties>

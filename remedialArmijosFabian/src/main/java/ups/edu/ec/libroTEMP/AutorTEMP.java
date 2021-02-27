@@ -6,9 +6,7 @@ public class AutorTEMP {
 	
 	private String nombres;
 	
-	private String nacionalidad;
 	
-	private int numeroPublicaciones;
 
 	public int getId() {
 		return id;
@@ -26,21 +24,7 @@ public class AutorTEMP {
 		this.nombres = nombres;
 	}
 
-	public String getNacionalidad() {
-		return nacionalidad;
-	}
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
-	}
-
-	public int getNumeroPublicaciones() {
-		return numeroPublicaciones;
-	}
-
-	public void setNumeroPublicaciones(int numeroPublicaciones) {
-		this.numeroPublicaciones = numeroPublicaciones;
-	}
 	
 	
 	

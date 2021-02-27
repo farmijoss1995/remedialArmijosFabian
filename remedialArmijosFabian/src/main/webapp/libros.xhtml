@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<!-- xmlns:h="http://java.sun.com/jsf/html" -->
+
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition template="layout.xhtml">
+		<ui:define name="content">
+			<center>
+				<h1>Crear Libros</h1>
+			</center>
+
+			<div class="container">
+				<h:form enctype="multipart/form-data">
+					<div class="form-row">
+
+						<h:outputLabel value="Titulo: " for="titulo" />
+						<h:inputText class="form-control" value="#{libroMB.libro.titulo}"
+							id="titulo" />
+						<h:message for="titulo" />
+
+					</div>
+
+
+					<div class="form-row">
+
+						<h:outputLabel value="Descripcion: " for="desc" />
+						<h:inputTextarea class="form-control"
+							value="#{libroMB.libro.descripcion}" id="desc" />
+						<h:message for="desc" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Portada: " for="portada" />
+						<p:growl showDetail="true" />
+						<h:inputFile id="file" class="textbox" value="#{libroMB.file}" />
+						<!-- <h:inputFile id="portada" value="#{libroMB.libro.portada}" requiredMessage="Sube una iamgen">
+								</h:inputFile> -->
+						<!-- <h:inputText class="form-control" value="#{libroMB.libro.portada}" id="portada" /> -->
+						<h:message for="portada" />
+
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Fecha Publicacion: " for="fecha" />
+						<h:inputText class="form-control"
+							value="#{libroMB.libro.fechaPublicacion}" id="fecha">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:inputText>
+						<h:message for="fecha" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Numero de paginas: " for="paginas" />
+						<h:inputText class="form-control" value="#{libroMB.libro.paginas}"
+							id="paginas" />
+						<h:message for="paginas" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Precio: " for="precio" />
+						<h:inputText class="form-control" value="#{libroMB.libro.precio}"
+							id="precio" />
+						<h:message for="precio" />
+
+					</div>
+
+					<div class="form-row">
+
+						<h:outputLabel value="Stock: " for="stock" />
+						<h:inputText class="form-control" value="#{libroMB.libro.stock}"
+							id="stock" />
+						<h:message for="stock" />
+
+					</div>
+					<br />
+					<div class="container">
+						<div class="row">
+							<div class="col-sm">
+								<h5>Agregar Autor</h5>
+								<div class="container">
+
+									<div class="col-lg">
+										<h:dataTable value="#{libroMB.libro.autores}" var="la"
+											class="table">
+											<h:column class="thead-dark">
+												<f:facet name="header">Codigo Autor</f:facet>
+												<label>Id: </label>
+												<h:inputText value="#{la.idBuscar}" id="idBuscar">
+													<f:ajax render="autordato" execute="idBuscar"
+														listener="#{libroMB.buscarAutor(la)}" />
+												</h:inputText>
+												<h:outputText id="autordato" value="#{la.autor.nombres}" />
+
+											</h:column>
+										</h:dataTable>
+										<h:commandButton action="#{libroMB.agregarAutor()}"
+											class="btn btn-dark btn-md" value="Agregar Autor" />
+									</div>
+									
+
+									<div class="col-sm">
+										<h5>Agregar Categoria</h5>
+										<h:dataTable value="#{libroMB.libro.categorias}" var="ca" class="table">
+											<h:column class="thead-dark">
+												<f:facet name="header">Codigo Categoria</f:facet>
+												<label>Id:</label>
+												<h:inputText value="#{ca.idBuscarCategoria}" id="idBuscarCategoria">
+													<f:ajax render="categoriadato" execute="idBuscarCategoria"
+														listener="#{libroMB.buscarCategoria(ca)}"/>
+												</h:inputText>
+												<h:outputText id="categoriadato" value="#{ca.categoria.nombre}" />
+											</h:column>
+										</h:dataTable>
+										<h:commandButton action="#{libroMB.agregarCategoria()}" 
+											class="btn btn-dark btn-md" value="Agregar Categoria" />
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm">
+								<h:commandButton class="btn btn-primary  btn-lg  btn-block"
+									action="#{libroMB.crearLibro()}" value="Guardar Libro" />
+							</div>
+
+						</div>
+					</div>
+
+
+				</h:form>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+
+
+</h:body>
+</html>
