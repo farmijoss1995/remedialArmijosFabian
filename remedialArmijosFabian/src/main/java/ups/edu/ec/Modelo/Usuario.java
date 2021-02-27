@@ -37,28 +37,9 @@ public class Usuario implements Serializable {
 	@NotNull
 	private String telefono;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
-	// @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-	private List<Direccion> direcciones;
-
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
-	private List<Tarjeta> tarjetas;
-
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Compra> compras;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Voto> votos;
-
-	
-	
-
-	public void agregarVoto(Voto voto) {
-		if (votos == null) {
-			votos = new ArrayList<Voto>();
-		}
-		votos.add(voto);
-	}
 
 	public void nuevaCompra(Compra compra) {
 		if (compras == null) {
@@ -71,23 +52,7 @@ public class Usuario implements Serializable {
 		super();
 	}
 
-	public void agregarDireccion(Direccion direccion) {
-		if (direcciones == null) {
-			direcciones = new ArrayList<Direccion>();
-		}
-		direcciones.add(direccion);
-		for (int i = 0; i < direcciones.size(); i++) {
-			System.out.println("Direcciones " + direcciones.get(i).toString());
-		}
-	}
-
-	public void agregarTarjeta(Tarjeta tarjeta) {
-		if (tarjetas == null) {
-			tarjetas = new ArrayList<>();
-		}
-		tarjetas.add(tarjeta);
-	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -136,22 +101,6 @@ public class Usuario implements Serializable {
 		this.nombres = nombres;
 	}
 
-	public List<Direccion> getDirecciones() {
-		return direcciones;
-	}
-
-	public void setDirecciones(List<Direccion> direcciones) {
-		this.direcciones = direcciones;
-	}
-
-	public List<Tarjeta> getTarjetas() {
-		return tarjetas;
-	}
-
-	public void setTarjetas(List<Tarjeta> tarjetas) {
-		this.tarjetas = tarjetas;
-	}
-
 	public List<Compra> getCompras() {
 		return compras;
 	}
@@ -167,15 +116,6 @@ public class Usuario implements Serializable {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
-	public List<Voto> getVotos() {
-		return votos;
-	}
-
-	public void setVotos(List<Voto> votos) {
-		this.votos = votos;
-	}
-
 
 
 	@Override

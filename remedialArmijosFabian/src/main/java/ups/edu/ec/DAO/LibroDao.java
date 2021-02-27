@@ -6,8 +6,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import modelo.Categoria;
-import modelo.Libro;
+import ups.edu.ec.Modelo.Categoria;
+import ups.edu.ec.Modelo.Libro;
 
 public class LibroDao {
 	

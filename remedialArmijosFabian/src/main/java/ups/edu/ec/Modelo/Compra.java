@@ -34,11 +34,6 @@ public class Compra {
 
 	private String descripcion;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	private Direccion direccion;
-
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	private Tarjeta tarjeta;
 	
 	private double total;
 
@@ -82,21 +77,7 @@ public class Compra {
 		this.detalles = detalles;
 	}
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
-
-	public Tarjeta getTarjeta() {
-		return tarjeta;
-	}
-
-	public void setTarjeta(Tarjeta tarjeta) {
-		this.tarjeta = tarjeta;
-	}
+	
 
 	public Double calcularTotal() {
 		Double total = 0.0;

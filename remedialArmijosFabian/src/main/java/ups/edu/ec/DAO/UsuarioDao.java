@@ -7,11 +7,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import modelo.Compra;
-import modelo.Direccion;
-import modelo.Tarjeta;
-import modelo.Usuario;
-import modelo.Voto;
+import ups.edu.ec.Modelo.Compra;
+
+import ups.edu.ec.Modelo.Usuario;
 
 public class UsuarioDao {
 	
@@ -35,12 +33,7 @@ public class UsuarioDao {
 		Query query = em.createQuery(jqpl, Usuario.class);
 		List<Usuario> usuarios = query.getResultList();
 		for (Usuario usuario : usuarios) {
-			usuario.getDirecciones().size();
-//			usuario.setCompartidosEnviados(null);
-//			usuario.setCompartidosRecibidos(null);
-//			usuario.setCompras(null);
-//			usuario.setTarjetas(null);
-			
+				
 		}
 		
 		return usuarios;
@@ -59,10 +52,6 @@ public class UsuarioDao {
 		Query query = em.createQuery(jpql, Usuario.class);
 		query.setParameter("id", id);
 		Usuario usuario = (Usuario) query.getSingleResult();
-		List<Direccion> direcciones = new ArrayList<>();
-		for (Direccion direccion : usuario.getDirecciones()) {
-			direcciones.add(direccion);
-		}
 		return usuario;
 	}
 	
@@ -83,33 +72,7 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
-	public Usuario obtenerDirecciones(int id) {
-		String jpql = "SELECT u FROM Usuario u JOIN FETCH u.direcciones where u.id = :id";
-		Query query = em.createQuery(jpql, Usuario.class);
-		query.setParameter("id", id);
-		Usuario u = (Usuario) query.getSingleResult();
-		List<Direccion> direcciones = new ArrayList<>();
-		for(Direccion d: u.getDirecciones()) {
-			direcciones.add(d);
-		}
-		
-		
-		return u;
-	}
-	
-	public Usuario tarjetas(int id) {
-		String jpql = "SELECT u FROM Usuario u JOIN FETCH u.tarjetas where u.id = :id";
-		Query query = em.createQuery(jpql, Usuario.class);
-		query.setParameter("id", id);
-		Usuario u = (Usuario) query.getSingleResult();
-		List<Tarjeta> tarjetas = new ArrayList<>();
-		for(Tarjeta t: u.getTarjetas()) {
-			tarjetas.add(t);
-		}
-		
-		return u;
-	}
-	
+
 	public List<Compra> misCompras(int id) {
 		String jpql = "SELECT c FROM Compra c JOIN FETCH c.detalles  where c.usuario.id = :id";
 		Query query = em.createQuery(jpql, Compra.class);

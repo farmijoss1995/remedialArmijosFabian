@@ -47,12 +47,7 @@ public class Libro {
 	@JoinColumn(name = "libro_id")
 	private List<LibroCategoria> categorias;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Voto> votos;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Compartir> compartidos;
-
 	public void agregarAuto(LibroAutor libroAutor) {
 		if (this.autores == null) {
 			this.autores = new ArrayList<LibroAutor>();
@@ -67,19 +62,6 @@ public class Libro {
 		this.categorias.add(libroCategoria);
 	}
 
-	public void agregarVoto(Voto voto) {
-		if (votos == null) {
-			votos = new ArrayList<Voto>();
-		}
-		votos.add(voto);
-	}
-
-	public void compartirEnviar(Compartir compartir) {
-		if (compartidos == null) {
-			compartidos = new ArrayList<Compartir>();
-		}
-		compartidos.add(compartir);
-	}
 	
 	public void setId(int id) {
 		this.id = id;
@@ -153,22 +135,6 @@ public class Libro {
 		this.autores = autores;
 	}
 
-	public List<Voto> getVotos() {
-		return votos;
-	}
-
-	public void setVotos(List<Voto> votos) {
-		this.votos = votos;
-	}
-	
-
-	public List<Compartir> getCompartidos() {
-		return compartidos;
-	}
-
-	public void setCompartidos(List<Compartir> compartidos) {
-		this.compartidos = compartidos;
-	}
 
 	@Override
 	public String toString() {

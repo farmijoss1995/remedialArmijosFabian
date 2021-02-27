@@ -3,7 +3,7 @@ package ups.edu.ec.DAO;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import modelo.Compra;
+import ups.edu.ec.Modelo.Compra;
 
 public class CompraDao {
 
